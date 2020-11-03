@@ -1,6 +1,6 @@
 
 import React, { useEffect } from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { useSelector, useDispatch } from "react-redux";
 // import fetchLogin from "../../async/fetchLogin";
 import { NavLink } from 'react-router-dom';
@@ -41,31 +41,31 @@ const Login = (props) => {
             name="facebook"
             data-test="button-oauth"
           >
-            {/* <FontAwesomeIcon
+            <FontAwesomeIcon
               icon={["fab", "facebook"]}
               size="lg"
               className="mr-2"
-            /> */}
+            />
             <span className="mr-2">Facebook</span>
           </button>
         </div>
         <div className="my-2">
           <button className="btn text-center" data-test="button-oauth">
-            {/* <FontAwesomeIcon
+            <FontAwesomeIcon
               icon={["fab", "twitter"]}
               size="lg"
               className="mr-2"
-            /> */}
+            />
             <span className="mr-4">Twitter</span>
           </button>
         </div>
         <div className="mb-3">
           <button className=" btn text-center" data-test="button-oauth">
-            {/* <FontAwesomeIcon
+            <FontAwesomeIcon
               icon={["fab", "google"]}
               size="lg"
               className="mr-2"
-            /> */}
+            />
             <span className="mr-4">Google</span>
           </button>
         </div>
