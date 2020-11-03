@@ -1,0 +1,9 @@
+.login button {
+    width: 12em;
+    background-color: #14a0c4;
+    color: white;
+}
+
+.login form {
+    width: 12em;
+}
