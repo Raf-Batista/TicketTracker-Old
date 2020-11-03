@@ -1,17 +1,15 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Login from './components/Login';
+import Signup from './components/Signup';
 import Footer from './components/Footer';
 
-import React from 'react'
+library.add(fab);
 
 const App = () => {
   return (
@@ -19,7 +17,9 @@ const App = () => {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/" component={Login} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
         </Switch>
         <Footer />
       </Router>
