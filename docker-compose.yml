@@ -1,0 +1,47 @@
+version: "3.7"
+services:
+  db:
+    container_name: ticket-tracker-db
+    image: postgres 
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    restart: always
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data 
+  api: 
+    container_name: ticket-tracker-api
+    build:
+      context: ./ticket-tracker-api
+    environment:
+      PG_USER: postgres
+      PG_PASSWORD: postgres
+      PG_DATABASE: ticket-tracker-api_development
+      PG_PORT: 5432
+      PG_HOST: db
+      CLIENT: client
+    volumes:
+      - ./ticket-tracker-api:/app
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true 
+    depends_on:
+      - db
+   # entrypoint: ./ticket-tracker-api/entrypoint.sh
+  client:
+    container_name: ticket-tracker-client
+    build:
+      context: ./ticket-tracker-client
+    volumes:
+      - ./ticket-tracker-client:/app
+     # - /app/node_modules
+    ports:
+      - "5000:5000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_ENVIRONMENT=development
+    stdin_open: true
+    tty: true
+    depends_on:
+      - api
