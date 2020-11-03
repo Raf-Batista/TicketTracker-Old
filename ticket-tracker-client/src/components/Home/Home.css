@@ -1,0 +1,8 @@
+.home span {
+    display: inline-block;
+    font-size: smaller;
+}
+
+.home a {
+    display: block;
+}
