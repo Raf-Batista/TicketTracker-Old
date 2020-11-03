@@ -3,7 +3,7 @@ import './Navbar.css'
 
 const Navbar = () => {
     return (
-        <div className="navigation d-lg-flex justify-content-lg-around">
+        <div className="navigation d-lg-flex justify-content-lg-around p-3">
             <nav class="navbar navbar-expand-lg navbar-light ">
                 <a class="navbar-brand" href="#">Ticket Tracker</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
