@@ -3,14 +3,24 @@ import React, { useEffect } from "react";
 import useForm from '../../hooks/useForm';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from 'react-router-dom';
+import login from '../../async/login';
+import currentUser from '../../async/currentUser';
 import './Login.css';
 
 const Login = (props) => {
+  const { history } = props;
 
   const initialUserState = { email: "", password: "" }
 
+  let loggedInUser;
+
+  useEffect(async () => {
+    loggedInUser = await currentUser();
+  }, []);
+
   const submit = () => {
-    console.log(user)
+    const loggedIn = login(user);
+    if(loggedIn) history.push('/projects');
   }
 
   const { values, reset, handleChange, handleSubmit } = useForm(initialUserState, submit); 
