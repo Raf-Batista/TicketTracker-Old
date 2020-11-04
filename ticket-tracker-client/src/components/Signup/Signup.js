@@ -1,8 +1,8 @@
-
 import React from "react";
 import useForm from '../../hooks/useForm';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from 'react-router-dom';
+import signup from '../../async/signup';
 import './Signup.css';
 
 const Login = (props) => {
@@ -10,7 +10,8 @@ const Login = (props) => {
 const initialUserState = {username: '', email: '', password: ''};
 
 const submit = () => {
-  console.log(user)
+  const result = signup(user); 
+  console.log(result)
 }
 
 const { values, reset, handleChange, handleSubmit } = useForm(initialUserState, submit); 
