@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
     resources :users
 
+    get '/current_user', to: 'sessions#logged_in?'
+    resource :sessions
 end
