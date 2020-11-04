@@ -1,11 +1,14 @@
 const URL = `${process.env.REACT_APP_URL}/users`;
-console.log(URL)
 
 const signup = async (params) => {
+    console.log(params)
+
     try {
         const response = await fetch(URL, {
+            credentials: 'include',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json", 
+                "Accept": "application/json",
             },
             method: "POST",
             body: JSON.stringify(params)
