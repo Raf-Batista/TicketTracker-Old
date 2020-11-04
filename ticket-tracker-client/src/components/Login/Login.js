@@ -1,35 +1,20 @@
 
 import React, { useEffect } from "react";
+import useForm from '../../hooks/useForm';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { useSelector, useDispatch } from "react-redux";
-// import fetchLogin from "../../async/fetchLogin";
 import { NavLink } from 'react-router-dom';
-// import useForm from '../../hooks/useForm';
 import './Login.css';
 
 const Login = (props) => {
 
-//   const initialUserState = { username: "", email: "", password: "" }
-//   const currentUser = useSelector(state => state.user);
-//   const dispatch = useDispatch();
+  const initialUserState = { email: "", password: "" }
 
-//   useEffect(() => {
-//     if(JSON.stringify(currentUser) !== '{}') props.history.push('/account');
-//   });
+  const submit = () => {
+    console.log(user)
+  }
 
-//   const handleClick = (e) => {
-//     e.preventDefault();
-//     // send e.target.innerText to server for OAuth
-//   };
-
-//   const submit = () => {
-//     dispatch(fetchLogin(values));
-//     reset();
-//     props.history.push('/account')
-//   };
-
-//   const { values, reset, handleChange, handleSubmit } = useForm(initialUserState, submit); 
-//   const user = values;
+  const { values, reset, handleChange, handleSubmit } = useForm(initialUserState, submit); 
+  const user = values;
 
   return (
     <div className="container text-center mt-5 login">
@@ -50,7 +35,7 @@ const Login = (props) => {
           </button>
         </div>
         <div className="my-2">
-          <button className="btn text-center" data-test="button-oauth">
+          <button className="btn text-center">
             <FontAwesomeIcon
               icon={["fab", "twitter"]}
               size="lg"
@@ -60,7 +45,7 @@ const Login = (props) => {
           </button>
         </div>
         <div className="mb-3">
-          <button className=" btn text-center" data-test="button-oauth">
+          <button className=" btn text-center">
             <FontAwesomeIcon
               icon={["fab", "google"]}
               size="lg"
@@ -71,15 +56,15 @@ const Login = (props) => {
         </div>
         <small>Login account using your email</small>
         <div className="d-flex justify-content-center mt-2">
-          <form  data-test="form-signup">
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <input
                 className="form-control  mt-2"
                 name="email"
                 type="email"
                 placeholder="email"
-                
-            
+                value={user.email}
+                onChange={handleChange}
                 required
               />
               <input
@@ -87,8 +72,8 @@ const Login = (props) => {
                 name="password"
                 type="password"
                 placeholder="password"
-               
-                
+                value={user.password}
+                onChange={handleChange}
                 required
               />
               <button className="btn mt-2" type="submit">
