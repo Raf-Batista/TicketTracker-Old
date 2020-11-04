@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
           if user
             token = CoreModules::JsonWebToken.encode({user_id: user.id}, 4.hours.from_now)
             cookies.signed[:jwt] = {value: token, httponly: true}
+
             render json: user, status: :created and return
           else
             render json: {error: 'Incorrect Email or Password'}, status: :unprocessable_entity and return 
@@ -23,10 +24,10 @@ class SessionsController < ApplicationController
 
     def logged_in? 
         user = current_user
-         if user 
-        render json: user, status: :ok and return
-    end 
+        if user 
+          render json: user, status: :ok and return
+        end 
 
-    render json: {error: "Not Logged In"}, status: :unprocessable_entity
+      render json: {errors: "Not Logged In"}, status: :unprocessable_entity
     end 
 end
