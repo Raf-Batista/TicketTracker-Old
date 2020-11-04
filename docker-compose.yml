@@ -19,7 +19,7 @@ services:
       PG_DATABASE: ticket-tracker-api_development
       PG_PORT: 5432
       PG_HOST: db
-      CLIENT: client
+      CLIENT: http://localhost:5000
     volumes:
       - ./ticket-tracker-api:/app
     ports:
@@ -39,8 +39,9 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - CHOKIDAR_USEPOLLING=true
-      - NODE_ENVIRONMENT=development
+      CHOKIDAR_USEPOLLING: 'true'
+      NODE_ENVIRONMENT: development
+      REACT_APP_URL: http://localhost:3000
     stdin_open: true
     tty: true
     depends_on:
