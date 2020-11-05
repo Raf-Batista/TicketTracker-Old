@@ -1,7 +1,7 @@
 [build]
   command = "CI= npm run build"
   publish="/build"
-  base = "./ticket-tracker-front-end"
+  base = "./ticket-tracker-client"
 [[redirects]]
   from = "/*"
   to = "/index.html"
