@@ -5,22 +5,16 @@ import currentUser from '../../../async/currentUser';
 
 const ProjectsContainer = (props) => {
     const { history } = props;
-    let loggedInUser;
+    const [user, setUser] = useState({id: 0, projects: []})
 
-    const [projects, setProjects] = useState([])
-
-    useEffect(async () => {
-      loggedInUser = await currentUser();
-      console.log(loggedInUser)
-      setProjects(loggedInUser.projects)
-    //   if (!loggedInUser) history.push('/')
+    useEffect( async () => {
+    setUser(await currentUser())
     }, []);
-
     return (
         <div className="text-center mt-5">
-             <Link>Create a Project</Link>
+             <Link to={`/users/${user.id}/projects/new`}>Create a Project</Link> 
              <span className="d-block">Click on a project to view tasks</span>
-            {projects.map(project => (<ProjectsView project={project} />))}
+            {user.projects.map(project => (<ProjectsView project={project} />))}
         </div>
     )
 }
