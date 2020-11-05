@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import ProjectsView from '../ProjectsView'
 import currentUser from '../../../async/currentUser';
 
@@ -16,8 +17,10 @@ const ProjectsContainer = (props) => {
     }, []);
 
     return (
-        <div>
-            {/* <ProjectsView projects={projects} /> */}
+        <div className="text-center mt-5">
+             <Link>Create a Project</Link>
+             <span className="d-block">Click on a project to view tasks</span>
+            {projects.map(project => (<ProjectsView project={project} />))}
         </div>
     )
 }
