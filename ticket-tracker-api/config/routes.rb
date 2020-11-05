@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
     get '/current_user', to: 'sessions#logged_in?'
     resource :sessions
+
+    resources :tasks
 end
