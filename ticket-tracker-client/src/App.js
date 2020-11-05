@@ -9,7 +9,9 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Footer from './components/Footer';
 import ProjectsContainer from './components/Projects/ProjectsContainer';
-import Task from './components/Task';
+import ProjectForm from './components/Projects/ProjectForm';
+import Task from './components/Tasks/Task';
+import TaskForm from './components/Tasks/TaskForm';
 
 library.add(fab);
 
@@ -23,7 +25,9 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/projects" render={props => <ProjectsContainer {...props}/>} />
+          <Route exact path="/users/:id/projects/new" render={props => <ProjectForm {...props}/>} />
           <Route exact path="/projects/:id/tasks" component={Task} />
+          <Route exact path="/projects/:id/tasks/new" component={TaskForm} />
         </Switch>
         <Footer />
       </Router>
