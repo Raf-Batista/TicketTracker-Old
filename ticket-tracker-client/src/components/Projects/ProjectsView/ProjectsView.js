@@ -12,7 +12,7 @@ const ProjectsView = (props) => {
                project.name}
             </Link>
            <span>{project.description}</span>
-           <span>{project.tasks.length} tasks   </span>
+           <span>{project.tasks.length} tasks </span>
         </div>
     )
 }
