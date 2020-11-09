@@ -1,7 +1,16 @@
 import React from 'react';
+import logout from '../../async/logout';
+import { useHistory } from 'react-router-dom';
 import './Navbar.css'
 
 const Navbar = () => {
+    let history = useHistory();
+
+    const handleClick = () => {
+       logout();
+       history.push('/');
+    }
+
     return (
         <div className="navigation d-lg-flex justify-content-lg-around p-3">
             <nav class="navbar navbar-expand-lg navbar-light ">
@@ -19,6 +28,9 @@ const Navbar = () => {
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Help</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onClick={handleClick}>Logout</a>
                         </li>
                     </ul>
                 </div>
